@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaldoZen", "SaldoZen\SaldoZen.csproj", "{5090B5CD-E8CD-41FE-B2B7-E7FB4D523C88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9898D921-7AC5-44E1-AD34-B31360ADFD5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{90D7B703-B878-4CBF-9FEA-B99F0CBA4E6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aplicacao", "aplicacao", "{8C5AB608-D24E-4E89-8C99-B236B90A612B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dominio", "dominio", "{C13133BB-0590-4528-976A-8FCD04DB8E71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infraestrutura", "infraestrutura", "{DED1DFE5-371A-455E-BD30-A5C2D3E6C933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaldoZen.Domain", "SaldoZen.Domain\SaldoZen.Domain.csproj", "{64161E08-1CDE-4FF9-A00A-CC023EC2BBFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaldoZen.Infraestrutura", "SaldoZen.Infraestrutura\SaldoZen.Infraestrutura.csproj", "{C8561110-1DE1-4379-9D99-004D73FE743E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5090B5CD-E8CD-41FE-B2B7-E7FB4D523C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5090B5CD-E8CD-41FE-B2B7-E7FB4D523C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5090B5CD-E8CD-41FE-B2B7-E7FB4D523C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5090B5CD-E8CD-41FE-B2B7-E7FB4D523C88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64161E08-1CDE-4FF9-A00A-CC023EC2BBFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64161E08-1CDE-4FF9-A00A-CC023EC2BBFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64161E08-1CDE-4FF9-A00A-CC023EC2BBFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64161E08-1CDE-4FF9-A00A-CC023EC2BBFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8561110-1DE1-4379-9D99-004D73FE743E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8561110-1DE1-4379-9D99-004D73FE743E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8561110-1DE1-4379-9D99-004D73FE743E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8561110-1DE1-4379-9D99-004D73FE743E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5090B5CD-E8CD-41FE-B2B7-E7FB4D523C88} = {90D7B703-B878-4CBF-9FEA-B99F0CBA4E6C}
+		{90D7B703-B878-4CBF-9FEA-B99F0CBA4E6C} = {9898D921-7AC5-44E1-AD34-B31360ADFD5E}
+		{8C5AB608-D24E-4E89-8C99-B236B90A612B} = {9898D921-7AC5-44E1-AD34-B31360ADFD5E}
+		{C13133BB-0590-4528-976A-8FCD04DB8E71} = {9898D921-7AC5-44E1-AD34-B31360ADFD5E}
+		{DED1DFE5-371A-455E-BD30-A5C2D3E6C933} = {9898D921-7AC5-44E1-AD34-B31360ADFD5E}
+		{64161E08-1CDE-4FF9-A00A-CC023EC2BBFB} = {C13133BB-0590-4528-976A-8FCD04DB8E71}
+		{C8561110-1DE1-4379-9D99-004D73FE743E} = {DED1DFE5-371A-455E-BD30-A5C2D3E6C933}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A008072E-2BA3-4CBC-96A6-9FDE0E1F83AD}
+	EndGlobalSection
+EndGlobal

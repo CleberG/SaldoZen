@@ -1,0 +1,6 @@
+@SaldoZen_HostAddress = http://localhost:5067
+
+GET {{SaldoZen_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
