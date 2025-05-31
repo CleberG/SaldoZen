@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SaldoZen.Domain.Interfaces;
+using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Model;
 
 namespace SaldoZen.Controllers

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SaldoZen.Domain.Interfaces;
+using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Infraestrutura.Context;
 using System.Linq.Expressions;
 
-namespace SaldoZen.Infraestrutura.Repositories
+namespace SaldoZen.Infraestrutura.Repositories.Base
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
@@ -36,7 +36,7 @@ namespace SaldoZen.Infraestrutura.Repositories
 
         public void Remove(TEntity entity)
         {
-             _context.Set<TEntity>().Remove(entity);
+            _context.Set<TEntity>().Remove(entity);
         }
 
         public void Update(TEntity entity)

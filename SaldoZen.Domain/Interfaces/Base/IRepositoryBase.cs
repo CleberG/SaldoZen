@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaldoZen.Domain.Interfaces
+namespace SaldoZen.Domain.Interfaces.Base
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {

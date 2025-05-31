@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SaldoZen.Infraestrutura.Context;
 using SaldoZen.Infraestrutura.Extensoes;
+using SaldoZen.MiddlewareExecption;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<SaldoZenContext>(options =>
 builder.Services.AddInfraestrutura();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
