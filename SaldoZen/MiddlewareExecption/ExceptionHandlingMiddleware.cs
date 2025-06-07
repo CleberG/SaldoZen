@@ -24,21 +24,25 @@ namespace SaldoZen.MiddlewareExecption
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erro inesperado.");
-
-                context.Response.ContentType = "application/json";
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
-                var problemDetails = new ProblemDetails
-                {
-                    Title = "Ocorreu um erro inesperado.",
-                    Status = context.Response.StatusCode,
-                    Detail = ex.Message,
-                    Instance = context.Request.Path
-                };
-
-                var result = JsonSerializer.Serialize(problemDetails);
-                await context.Response.WriteAsync(result);
+                await HandleExceptionAsync(context, ex);
             }
+        }
+
+        private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
+        {
+            context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+            var problemDetails = new ProblemDetails
+            {
+                Title = "Ocorreu um erro inesperado.",
+                Status = context.Response.StatusCode,
+                Detail = exception.Message,
+                Instance = context.Request.Path
+            };
+
+            var result = JsonSerializer.Serialize(problemDetails);
+             await context.Response.WriteAsync(result);
         }
     }
 }
