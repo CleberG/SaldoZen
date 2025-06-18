@@ -1,0 +1,45 @@
+﻿using SaldoZen.Domain.Enun;
+using SaldoZen.Domain.ValueObject;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SaldoZen.Domain.Model
+{
+    public class Usuario : EntityBase
+    {
+        /// <summary>
+        /// Nome completo do usuário
+        /// </summary>
+        public Nome Nome { get; private set; }
+
+        /// <summary>
+        /// CPF do usuário
+        /// </summary>
+        public string CPF { get; private set; }
+
+        /// <summary>
+        /// Data nascimento do usuário
+        /// </summary>
+        public DateTime? DataNascimento { get; private set; }
+
+        /// <summary>
+        /// Login de acesso ao sistema para o usuário
+        /// </summary>
+        public EmailCompleto Login { get; private set; }
+
+        /// <summary>
+        /// Value object senha do usuário
+        /// </summary>
+        public Senha? Senha { get; set; }
+
+        public string Role { get; private set; }
+
+        /// <summary>
+        /// Status do usuário
+        /// </summary>
+        public EUsuarioStatus Status { get; set; }
+    }
+}

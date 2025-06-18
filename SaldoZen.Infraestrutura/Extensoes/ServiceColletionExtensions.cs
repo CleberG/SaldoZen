@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SaldoZen.Domain.Interfaces.Base;
+using SaldoZen.Infraestrutura.Auth;
 using SaldoZen.Infraestrutura.Repositories.Base;
 
 namespace SaldoZen.Infraestrutura.Extensoes
@@ -11,6 +12,12 @@ namespace SaldoZen.Infraestrutura.Extensoes
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddAddAuth(this IServiceCollection services)
+        {
+            services.AddScoped<IAuthService, AuthService>();
             return services;
         }
     }
