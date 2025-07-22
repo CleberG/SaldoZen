@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SaldoZen.Aplicacao\SaldoZen.Aplicacao.csproj" />
     <ProjectReference Include="..\SaldoZen.Infraestrutura\SaldoZen.Infraestrutura.csproj" />
   </ItemGroup>
 

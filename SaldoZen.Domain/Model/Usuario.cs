@@ -41,5 +41,17 @@ namespace SaldoZen.Domain.Model
         /// Status do usuário
         /// </summary>
         public EUsuarioStatus Status { get; set; }
+
+        public Usuario() { }
+
+        public Usuario(Nome nome, DateTime dataNascimento, EmailCompleto login, Senha? senha, string role)
+        {
+            Nome = nome;
+            DataNascimento = dataNascimento;
+            Login = login;
+            Senha = senha;
+            Role = role;
+            CPF = string.Empty; // Inicializa CPF como vazio, pode ser alterado posteriormente
+        }
     }
 }

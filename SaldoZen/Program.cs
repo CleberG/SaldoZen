@@ -13,8 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SaldoZenContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddInfraestrutura();
-builder.Services.AddAddAuth();
+builder.Services.AddInfraestrutura(builder.Configuration);
+//builder.Services.AddAddAuth();
 
 var app = builder.Build();
 
