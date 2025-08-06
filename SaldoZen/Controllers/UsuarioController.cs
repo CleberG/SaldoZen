@@ -43,5 +43,21 @@ namespace SaldoZen.Controllers
 
             return NoContent();
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginRequest model)
+        {
+
+            var hash = _authService.ComputeHash(model.Senha);
+            var senha = new Senha(hash);
+
+            var user = new Usuario(nome, model.DataAniversario, email, senha, model.Role);
+
+            await _repository.AddAsync(user);
+            await _IUnitOfWork.CommitAsync();
+
+            return NoContent();
+        }
     }
 }
