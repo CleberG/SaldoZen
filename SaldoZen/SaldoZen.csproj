@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SaldoZen.Domain\SaldoZen.Domain.csproj" />
     <ProjectReference Include="..\SaldoZen.Infraestrutura\SaldoZen.Infraestrutura.csproj" />
   </ItemGroup>
 

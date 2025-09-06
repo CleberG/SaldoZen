@@ -21,5 +21,19 @@ namespace SaldoZen.Controllers
             var query = await _repository.GetAllAsync(); 
             return query.ToList();
         }
+
+        [HttpGet("{id}")]
+        public async Task<List<PlanoContas>> GetById()
+        {
+            var query = await _repository.GetAllAsync();
+            return query.ToList();
+        }
+
+        [HttpGet("teste")]
+        public async Task<string> GetTeste()
+        {
+            var query = await _repository.GetAllAsync();
+            return "Cleber binitão";
+        }
     }
 }
