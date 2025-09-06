@@ -13,11 +13,28 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<SaldoZenContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddInfraestrutura();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<SaldoZenContext>();
+        // O método .Migrate() aplica todas as migrations pendentes no banco de dados.
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        // Opcional: Adiciona um log caso algo dê errado com a migration
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Ocorreu um erro durante a execução das migrations.");
+    }
+}
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 

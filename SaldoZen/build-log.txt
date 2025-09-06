@@ -1,0 +1,397 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.debug
+#1 transferring dockerfile: 220B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/alpine:latest
+#2 DONE 0.6s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1
+#4 resolve docker.io/library/alpine:latest@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1 0.0s done
+#4 DONE 0.0s
+
+#5 [2/4] WORKDIR /context
+#5 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 18.75kB 0.0s done
+#6 DONE 0.0s
+
+#7 [3/4] COPY . .
+#7 DONE 0.2s
+
+#8 [4/4] RUN ls -R
+#8 0.207 .:
+#8 0.208 Controllers
+#8 0.208 Dockerfile
+#8 0.208 Dockerfile.debug
+#8 0.208 MiddlewareExecption
+#8 0.208 Program.cs
+#8 0.208 Properties
+#8 0.208 SaldoZen.csproj
+#8 0.208 SaldoZen.csproj.user
+#8 0.208 SaldoZen.http
+#8 0.208 appsettings.Development.json
+#8 0.208 appsettings.json
+#8 0.208 bin
+#8 0.208 build-log.txt
+#8 0.208 obj
+#8 0.208 
+#8 0.208 ./Controllers:
+#8 0.208 PlanoContasController.cs
+#8 0.208 
+#8 0.208 ./MiddlewareExecption:
+#8 0.208 ExceptionHandlingMiddleware.cs
+#8 0.208 
+#8 0.208 ./Properties:
+#8 0.208 launchSettings.json
+#8 0.208 
+#8 0.208 ./bin:
+#8 0.208 Debug
+#8 0.208 
+#8 0.208 ./bin/Debug:
+#8 0.208 net8.0
+#8 0.208 
+#8 0.208 ./bin/Debug/net8.0:
+#8 0.208 Azure.Core.dll
+#8 0.208 Azure.Identity.dll
+#8 0.208 Humanizer.dll
+#8 0.208 Microsoft.Bcl.AsyncInterfaces.dll
+#8 0.208 Microsoft.Build.Locator.dll
+#8 0.208 Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+#8 0.208 Microsoft.CodeAnalysis.CSharp.dll
+#8 0.208 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+#8 0.208 Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+#8 0.208 Microsoft.CodeAnalysis.Workspaces.dll
+#8 0.208 Microsoft.CodeAnalysis.dll
+#8 0.208 Microsoft.Data.SqlClient.dll
+#8 0.208 Microsoft.EntityFrameworkCore.Abstractions.dll
+#8 0.208 Microsoft.EntityFrameworkCore.Design.dll
+#8 0.208 Microsoft.EntityFrameworkCore.Relational.dll
+#8 0.208 Microsoft.EntityFrameworkCore.SqlServer.dll
+#8 0.208 Microsoft.EntityFrameworkCore.dll
+#8 0.208 Microsoft.Extensions.Caching.Abstractions.dll
+#8 0.208 Microsoft.Extensions.Caching.Memory.dll
+#8 0.208 Microsoft.Extensions.Configuration.Abstractions.dll
+#8 0.208 Microsoft.Extensions.DependencyInjection.Abstractions.dll
+#8 0.208 Microsoft.Extensions.DependencyInjection.dll
+#8 0.208 Microsoft.Extensions.DependencyModel.dll
+#8 0.208 Microsoft.Extensions.Logging.Abstractions.dll
+#8 0.208 Microsoft.Extensions.Logging.dll
+#8 0.208 Microsoft.Extensions.Options.dll
+#8 0.208 Microsoft.Extensions.Primitives.dll
+#8 0.208 Microsoft.Identity.Client.Extensions.Msal.dll
+#8 0.208 Microsoft.Identity.Client.dll
+#8 0.208 Microsoft.IdentityModel.Abstractions.dll
+#8 0.208 Microsoft.IdentityModel.JsonWebTokens.dll
+#8 0.208 Microsoft.IdentityModel.Logging.dll
+#8 0.208 Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+#8 0.208 Microsoft.IdentityModel.Protocols.dll
+#8 0.208 Microsoft.IdentityModel.Tokens.dll
+#8 0.208 Microsoft.OpenApi.dll
+#8 0.208 Microsoft.SqlServer.Server.dll
+#8 0.208 Microsoft.Win32.SystemEvents.dll
+#8 0.208 Mono.TextTemplating.dll
+#8 0.208 SaldoZen.Domain.dll
+#8 0.208 SaldoZen.Domain.pdb
+#8 0.208 SaldoZen.Infraestrutura.dll
+#8 0.208 SaldoZen.Infraestrutura.pdb
+#8 0.208 SaldoZen.deps.json
+#8 0.208 SaldoZen.dll
+#8 0.208 SaldoZen.exe
+#8 0.208 SaldoZen.pdb
+#8 0.208 SaldoZen.runtimeconfig.json
+#8 0.208 SaldoZen.staticwebassets.endpoints.json
+#8 0.208 Swashbuckle.AspNetCore.Swagger.dll
+#8 0.208 Swashbuckle.AspNetCore.SwaggerGen.dll
+#8 0.208 Swashbuckle.AspNetCore.SwaggerUI.dll
+#8 0.208 System.ClientModel.dll
+#8 0.208 System.CodeDom.dll
+#8 0.208 System.Composition.AttributedModel.dll
+#8 0.208 System.Composition.Convention.dll
+#8 0.208 System.Composition.Hosting.dll
+#8 0.208 System.Composition.Runtime.dll
+#8 0.208 System.Composition.TypedParts.dll
+#8 0.208 System.Configuration.ConfigurationManager.dll
+#8 0.208 System.Diagnostics.DiagnosticSource.dll
+#8 0.208 System.Drawing.Common.dll
+#8 0.208 System.Formats.Asn1.dll
+#8 0.208 System.IO.Pipelines.dll
+#8 0.208 System.IdentityModel.Tokens.Jwt.dll
+#8 0.208 System.Memory.Data.dll
+#8 0.208 System.Runtime.Caching.dll
+#8 0.208 System.Security.Cryptography.ProtectedData.dll
+#8 0.208 System.Security.Permissions.dll
+#8 0.208 System.Text.Encodings.Web.dll
+#8 0.208 System.Text.Json.dll
+#8 0.208 System.Windows.Extensions.dll
+#8 0.208 appsettings.Development.json
+#8 0.208 appsettings.json
+#8 0.208 cs
+#8 0.208 de
+#8 0.208 es
+#8 0.208 fr
+#8 0.208 it
+#8 0.208 ja
+#8 0.208 ko
+#8 0.208 pl
+#8 0.208 pt-BR
+#8 0.208 ru
+#8 0.208 runtimes
+#8 0.208 tr
+#8 0.208 zh-Hans
+#8 0.208 zh-Hant
+#8 0.208 
+#8 0.208 ./bin/Debug/net8.0/cs:
+#8 0.208 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.208 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.208 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.208 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.resources.dll
+#8 0.209 
+#8 0.209 ./bin/Debug/net8.0/de:
+#8 0.209 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.resources.dll
+#8 0.209 
+#8 0.209 ./bin/Debug/net8.0/es:
+#8 0.209 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.resources.dll
+#8 0.209 
+#8 0.209 ./bin/Debug/net8.0/fr:
+#8 0.209 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.resources.dll
+#8 0.209 
+#8 0.209 ./bin/Debug/net8.0/it:
+#8 0.209 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.209 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.resources.dll
+#8 0.210 
+#8 0.210 ./bin/Debug/net8.0/ja:
+#8 0.210 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.resources.dll
+#8 0.210 
+#8 0.210 ./bin/Debug/net8.0/ko:
+#8 0.210 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.resources.dll
+#8 0.210 
+#8 0.210 ./bin/Debug/net8.0/pl:
+#8 0.210 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.resources.dll
+#8 0.210 
+#8 0.210 ./bin/Debug/net8.0/pt-BR:
+#8 0.210 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.210 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.resources.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/ru:
+#8 0.211 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.resources.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes:
+#8 0.211 browser
+#8 0.211 unix
+#8 0.211 win
+#8 0.211 win-arm
+#8 0.211 win-arm64
+#8 0.211 win-x64
+#8 0.211 win-x86
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/browser:
+#8 0.211 lib
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/browser/lib:
+#8 0.211 net8.0
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/browser/lib/net8.0:
+#8 0.211 System.Text.Encodings.Web.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/unix:
+#8 0.211 lib
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/unix/lib:
+#8 0.211 net6.0
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/unix/lib/net6.0:
+#8 0.211 Microsoft.Data.SqlClient.dll
+#8 0.211 System.Drawing.Common.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win:
+#8 0.211 lib
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win/lib:
+#8 0.211 net6.0
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win/lib/net6.0:
+#8 0.211 Microsoft.Data.SqlClient.dll
+#8 0.211 Microsoft.Win32.SystemEvents.dll
+#8 0.211 System.Drawing.Common.dll
+#8 0.211 System.Runtime.Caching.dll
+#8 0.211 System.Security.Cryptography.ProtectedData.dll
+#8 0.211 System.Windows.Extensions.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-arm:
+#8 0.211 native
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-arm/native:
+#8 0.211 Microsoft.Data.SqlClient.SNI.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-arm64:
+#8 0.211 native
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-arm64/native:
+#8 0.211 Microsoft.Data.SqlClient.SNI.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-x64:
+#8 0.211 native
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-x64/native:
+#8 0.211 Microsoft.Data.SqlClient.SNI.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-x86:
+#8 0.211 native
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/runtimes/win-x86/native:
+#8 0.211 Microsoft.Data.SqlClient.SNI.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/tr:
+#8 0.211 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.resources.dll
+#8 0.211 
+#8 0.211 ./bin/Debug/net8.0/zh-Hans:
+#8 0.211 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.211 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.212 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.212 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.212 Microsoft.CodeAnalysis.resources.dll
+#8 0.212 
+#8 0.212 ./bin/Debug/net8.0/zh-Hant:
+#8 0.212 Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+#8 0.212 Microsoft.CodeAnalysis.CSharp.resources.dll
+#8 0.212 Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+#8 0.212 Microsoft.CodeAnalysis.Workspaces.resources.dll
+#8 0.212 Microsoft.CodeAnalysis.resources.dll
+#8 0.212 
+#8 0.212 ./obj:
+#8 0.212 Container
+#8 0.212 Debug
+#8 0.212 SaldoZen.Api.csproj.nuget.dgspec.json
+#8 0.212 SaldoZen.Api.csproj.nuget.g.props
+#8 0.212 SaldoZen.Api.csproj.nuget.g.targets
+#8 0.212 SaldoZen.csproj.nuget.dgspec.json
+#8 0.212 SaldoZen.csproj.nuget.g.props
+#8 0.212 SaldoZen.csproj.nuget.g.targets
+#8 0.212 project.assets.json
+#8 0.212 project.nuget.cache
+#8 0.212 
+#8 0.212 ./obj/Container:
+#8 0.212 AdditionalProbingPaths.cache
+#8 0.212 ContainerDevelopmentMode.cache
+#8 0.212 ContainerId.cache
+#8 0.212 ContainerName.cache
+#8 0.212 ContainerOperatingSystemFlavor.cache
+#8 0.212 ContainerRunContext.cache
+#8 0.212 DebuggeeArguments.cache
+#8 0.212 DebuggeeKillProcessCommand.cache
+#8 0.212 DebuggeeProgram.cache
+#8 0.212 DebuggeeWorkingDirectory.cache
+#8 0.212 DistrolessHelperSupported.cache
+#8 0.212 FastModeProjectMountDirectory.cache
+#8 0.212 ImageBuildContext.cache
+#8 0.212 ImageId.cache
+#8 0.212 OperatingSystemName.cache
+#8 0.212 TargetFramework.cache
+#8 0.212 VolumeMappings.cache
+#8 0.212 VolumeMappings2.cache
+#8 0.212 VsDbgScript.cache
+#8 0.212 
+#8 0.212 ./obj/Debug:
+#8 0.212 net8.0
+#8 0.212 
+#8 0.212 ./obj/Debug/net8.0:
+#8 0.212 SaldoZen.Api.AssemblyInfo.cs
+#8 0.212 SaldoZen.Api.AssemblyInfoInputs.cache
+#8 0.212 SaldoZen.Api.GeneratedMSBuildEditorConfig.editorconfig
+#8 0.212 SaldoZen.Api.GlobalUsings.g.cs
+#8 0.212 SaldoZen.Api.assets.cache
+#8 0.212 SaldoZen.Api.csproj.AssemblyReference.cache
+#8 0.212 SaldoZen.AssemblyInfo.cs
+#8 0.212 SaldoZen.AssemblyInfoInputs.cache
+#8 0.212 SaldoZen.GeneratedMSBuildEditorConfig.editorconfig
+#8 0.212 SaldoZen.GlobalUsings.g.cs
+#8 0.212 SaldoZen.MvcApplicationPartsAssemblyInfo.cache
+#8 0.212 SaldoZen.MvcApplicationPartsAssemblyInfo.cs
+#8 0.212 SaldoZen.assets.cache
+#8 0.212 SaldoZen.csproj.AssemblyReference.cache
+#8 0.212 SaldoZen.csproj.CoreCompileInputs.cache
+#8 0.212 SaldoZen.csproj.FileListAbsolute.txt
+#8 0.212 SaldoZen.csproj.Up2Date
+#8 0.212 SaldoZen.dll
+#8 0.212 SaldoZen.genruntimeconfig.cache
+#8 0.212 SaldoZen.pdb
+#8 0.212 SaldoZen.sourcelink.json
+#8 0.212 apphost.exe
+#8 0.212 ref
+#8 0.212 refint
+#8 0.212 rjsmcshtml.dswa.cache.json
+#8 0.212 rjsmrazor.dswa.cache.json
+#8 0.212 rpswa.dswa.cache.json
+#8 0.212 staticwebassets
+#8 0.212 staticwebassets.build.endpoints.json
+#8 0.212 staticwebassets.build.json
+#8 0.212 staticwebassets.build.json.cache
+#8 0.212 staticwebassets.references.upToDateCheck.txt
+#8 0.212 staticwebassets.removed.txt
+#8 0.212 
+#8 0.212 ./obj/Debug/net8.0/ref:
+#8 0.212 SaldoZen.dll
+#8 0.212 
+#8 0.212 ./obj/Debug/net8.0/refint:
+#8 0.212 SaldoZen.dll
+#8 0.212 
+#8 0.212 ./obj/Debug/net8.0/staticwebassets:
+#8 DONE 0.2s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 1.9s done
+#9 exporting manifest sha256:3673d913490940f0d66dd9131b4cd40d5795b42f56a28833c8a7e63be6711165 0.0s done
+#9 exporting config sha256:f414299e34e9eaab4d2776794ce93bdbc59958a2e3b423de71df1105969bd515 done
+#9 exporting attestation manifest sha256:908e81462fe3c15cf217cebc4fb3e01b4eeab7c7f764c8bca56c5d86deaa84fb 0.0s done
+#9 exporting manifest list sha256:90a962080d4a46dbe8779f9171c9415012c3d4526db5e411c62f994172e6023b 0.0s done
+#9 naming to moby-dangling@sha256:90a962080d4a46dbe8779f9171c9415012c3d4526db5e411c62f994172e6023b done
+#9 unpacking to moby-dangling@sha256:90a962080d4a46dbe8779f9171c9415012c3d4526db5e411c62f994172e6023b
+#9 unpacking to moby-dangling@sha256:90a962080d4a46dbe8779f9171c9415012c3d4526db5e411c62f994172e6023b 0.3s done
+#9 DONE 2.3s

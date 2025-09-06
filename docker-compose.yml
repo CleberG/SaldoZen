@@ -1,0 +1,42 @@
+version: '3.8' # Especifica a versão do Docker Compose
+
+services:
+  # Serviço 1: Seu banco de dados PostgreSQL
+  postgres-db:
+    image: postgres # Usa a imagem que você já tem
+    container_name: postgres-db
+    ports:
+      - "5432:5432" # Mapeia a porta do seu PC para a porta do contêiner
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=saldodb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data # PERSISTÊNCIA DOS DADOS!
+
+  # Serviço 2: Sua API .NET 8
+  saldozen-api:
+    container_name: saldozen-container
+    build:
+      context: . # Diz para construir a imagem usando o Dockerfile no diretório atual
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080" # Mapeia a porta 5000 do seu PC para a 8080 do contêiner (conforme seu EXPOSE)
+    depends_on:
+      - postgres-db # Diz para esperar o banco de dados iniciar antes de iniciar a API
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres-db;Port=5432;Database=saldodb;Username=postgres;Password=mysecretpassword
+    # --- INÍCIO DA CORREÇÃO ---
+    # As seções 'volumes' e 'command' foram movidas para aqui,
+    # dentro do serviço 'saldozen-api'.
+    volumes:
+      - ./SaldoZen:/app/SaldoZen # Mapeia a pasta do seu projeto de API
+      # Adicione mapeamentos para outros projetos se necessário
+      # - ./SaldoZen.Domain:/app/SaldoZen.Domain
+    command: dotnet watch run --project ./SaldoZen/SaldoZen.csproj --urls "http://*:8080"
+    # --- FIM DA CORREÇÃO ---
+
+# Esta seção de volumes no final é para DEFINIR volumes nomeados, como o postgres-data
+volumes:
+  postgres-data:

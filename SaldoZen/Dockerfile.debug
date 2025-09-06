@@ -1,0 +1,6 @@
+# Dockerfile temporário para depuração
+# Este arquivo vai listar todos os arquivos que o Docker consegue "ver" no projeto.
+FROM alpine
+WORKDIR /context
+COPY . .
+RUN ls -R
