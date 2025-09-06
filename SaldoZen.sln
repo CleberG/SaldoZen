@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaldoZen.Domain", "SaldoZen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaldoZen.Infraestrutura", "SaldoZen.Infraestrutura\SaldoZen.Infraestrutura.csproj", "{C8561110-1DE1-4379-9D99-004D73FE743E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaldoZen.Aplicacao", "SaldoZen.Aplicacao\SaldoZen.Aplicacao.csproj", "{8BA44F71-7678-4DD0-B478-368C7A36C980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{C8561110-1DE1-4379-9D99-004D73FE743E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8561110-1DE1-4379-9D99-004D73FE743E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8561110-1DE1-4379-9D99-004D73FE743E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA44F71-7678-4DD0-B478-368C7A36C980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA44F71-7678-4DD0-B478-368C7A36C980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA44F71-7678-4DD0-B478-368C7A36C980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA44F71-7678-4DD0-B478-368C7A36C980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +55,7 @@ Global
 		{DED1DFE5-371A-455E-BD30-A5C2D3E6C933} = {9898D921-7AC5-44E1-AD34-B31360ADFD5E}
 		{64161E08-1CDE-4FF9-A00A-CC023EC2BBFB} = {C13133BB-0590-4528-976A-8FCD04DB8E71}
 		{C8561110-1DE1-4379-9D99-004D73FE743E} = {DED1DFE5-371A-455E-BD30-A5C2D3E6C933}
+		{8BA44F71-7678-4DD0-B478-368C7A36C980} = {8C5AB608-D24E-4E89-8C99-B236B90A612B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A008072E-2BA3-4CBC-96A6-9FDE0E1F83AD}
