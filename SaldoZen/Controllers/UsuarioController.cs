@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using SaldoZen.Aplicacao.Dtos.Autorizacao;
 using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Model;
 using SaldoZen.Domain.ValueObject;
 using SaldoZen.Infraestrutura.Auth;
-using SaldoZen.Infraestrutura.Context;
-using System.Threading.Tasks;
 
 namespace SaldoZen.Controllers
 {
@@ -44,18 +41,21 @@ namespace SaldoZen.Controllers
             return NoContent();
         }
 
-        [HttpPost]
+        [HttpPost("/login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginRequest model)
         {
 
-            var hash = _authService.ComputeHash(model.Senha);
-            var senha = new Senha(hash);
+            //var hash = _authService.ComputeHash(model.Senha);
+            //var senha = new Senha(hash);
 
-            var user = new Usuario(nome, model.DataAniversario, email, senha, model.Role);
+            //var nome = new Nome(model.NomeCompleto);
+            //var email = new EmailCompleto(model.Email);
 
-            await _repository.AddAsync(user);
-            await _IUnitOfWork.CommitAsync();
+            //var user = new Usuario(nome, model.DataAniversario, email, senha, model.Role);
+
+            //await _repository.AddAsync(user);
+            //await _IUnitOfWork.CommitAsync();
 
             return NoContent();
         }

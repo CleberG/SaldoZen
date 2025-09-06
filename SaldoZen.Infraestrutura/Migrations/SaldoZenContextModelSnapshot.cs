@@ -53,30 +53,30 @@ namespace SaldoZen.Infraestrutura.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime?>("AlteradoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasColumnType("character varying(11)");
 
                     b.Property<DateTime>("CriadoEm")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("DataNascimento")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -88,12 +88,12 @@ namespace SaldoZen.Infraestrutura.Migrations
                     b.OwnsOne("SaldoZen.Domain.ValueObject.EmailCompleto", "Login", b1 =>
                         {
                             b1.Property<int>("UsuarioId")
-                                .HasColumnType("int");
+                                .HasColumnType("integer");
 
                             b1.Property<string>("Email")
                                 .IsRequired()
                                 .HasMaxLength(150)
-                                .HasColumnType("nvarchar(150)")
+                                .HasColumnType("character varying(150)")
                                 .HasColumnName("LoginEmail");
 
                             b1.HasKey("UsuarioId");
@@ -107,12 +107,12 @@ namespace SaldoZen.Infraestrutura.Migrations
                     b.OwnsOne("SaldoZen.Domain.ValueObject.Nome", "Nome", b1 =>
                         {
                             b1.Property<int>("UsuarioId")
-                                .HasColumnType("int");
+                                .HasColumnType("integer");
 
                             b1.Property<string>("NomeCompleto")
                                 .IsRequired()
                                 .HasMaxLength(150)
-                                .HasColumnType("nvarchar(150)")
+                                .HasColumnType("character varying(150)")
                                 .HasColumnName("Nome");
 
                             b1.HasKey("UsuarioId");
@@ -126,12 +126,12 @@ namespace SaldoZen.Infraestrutura.Migrations
                     b.OwnsOne("SaldoZen.Domain.ValueObject.Senha", "Senha", b1 =>
                         {
                             b1.Property<int>("UsuarioId")
-                                .HasColumnType("int");
+                                .HasColumnType("integer");
 
                             b1.Property<string>("SenhaHash")
                                 .IsRequired()
                                 .HasMaxLength(255)
-                                .HasColumnType("nvarchar(255)")
+                                .HasColumnType("character varying(255)")
                                 .HasColumnName("SenhaHash");
 
                             b1.HasKey("UsuarioId");
