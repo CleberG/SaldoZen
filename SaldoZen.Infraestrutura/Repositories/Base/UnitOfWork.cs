@@ -5,21 +5,21 @@ namespace SaldoZen.Infraestrutura.Repositories.Base
 {
     internal class UnitOfWork : IUnitOfWork
     {
-        private readonly SaldoZenContext _contex;
+        private readonly SaldoZenContext _context;
 
         public UnitOfWork(SaldoZenContext contex)
         {
-            _contex = contex;
+            _context = contex;
         }
 
         public async Task<int> CommitAsync()
         {
-           return await _contex.SaveChangesAsync();
+           return await _context.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            _contex.Dispose();
+            _context.Dispose();
         }
     }
 }

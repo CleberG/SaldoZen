@@ -12,8 +12,8 @@ using SaldoZen.Infraestrutura.Context;
 namespace SaldoZen.Infraestrutura.Migrations
 {
     [DbContext(typeof(SaldoZenContext))]
-    [Migration("20250906140734_inciadoNovamenteMigraoes")]
-    partial class inciadoNovamenteMigraoes
+    [Migration("20250906222456_restart")]
+    partial class restart
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

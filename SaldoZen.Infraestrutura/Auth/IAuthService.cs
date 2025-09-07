@@ -10,5 +10,7 @@ namespace SaldoZen.Infraestrutura.Auth
     {
         string ComputeHash(string input);
         string GenerateToken( string senha, string role);
+
+        bool VerifyPassword(string providedPassword, string storedHash);
     }
 }

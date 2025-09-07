@@ -16,20 +16,14 @@ namespace SaldoZen.Infraestrutura.Auth
             _configuration = configuration;
         }
 
+        public bool VerifyPassword(string providedPassword, string storedHash)
+        {
+            return BCrypt.Net.BCrypt.Verify(providedPassword, storedHash);
+        }
+
         public string ComputeHash(string input)
         {
-            using (var sha256 = SHA256.Create())
-            {
-                var bytes = Encoding.UTF8.GetBytes(input);
-                var hash = sha256.ComputeHash(bytes);
-
-                var builder = new StringBuilder();
-                for (int i = 0; i < hash.Length; i++)
-                {
-                    builder.Append(hash[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
+            return BCrypt.Net.BCrypt.HashPassword(input);
         }
         public string GenerateToken(string email, string role)
         {
@@ -50,10 +44,12 @@ namespace SaldoZen.Infraestrutura.Auth
                 audience: audience,
                 claims: claims,
                 null,
-                expires: DateTime.Now.AddHours(2),
+                expires: DateTime.UtcNow.AddHours(2),
                 signingCredentials: credentials
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        
     }
 }

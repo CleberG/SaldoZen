@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
 
-        public DateTime CriadoEm { get; set; } = DateTime.Now;
+        public DateTime CriadoEm { get; set; } = DateTime.UtcNow;
 
         public DateTime? AlteradoEm { get; set; }
     }

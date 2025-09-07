@@ -14,6 +14,6 @@ namespace SaldoZen.Domain.Interfaces.Base
         Task AddAsync(TEntity entity);
         void Update(TEntity entity);
         void Remove(TEntity entity);
-        Task<IEnumerable<TEntity>> ListBy(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<TEntity> ListBy(Expression<Func<TEntity, bool>> predicate);
     }
 }

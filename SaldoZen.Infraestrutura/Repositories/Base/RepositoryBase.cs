@@ -19,9 +19,9 @@ namespace SaldoZen.Infraestrutura.Repositories.Base
             await _context.Set<TEntity>().AddAsync(entity);
         }
 
-        public async Task<IEnumerable<TEntity>> ListBy(Expression<Func<TEntity, bool>> predicate)
+        public IQueryable<TEntity> ListBy(Expression<Func<TEntity, bool>> predicate)
         {
-            return await _context.Set<TEntity>().Where(predicate).ToListAsync();
+            return _context.Set<TEntity>().Where(predicate);
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()

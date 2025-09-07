@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SaldoZen.Infraestrutura.Migrations
 {
     /// <inheritdoc />
-    public partial class inciadoNovamenteMigraoes : Migration
+    public partial class restart : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

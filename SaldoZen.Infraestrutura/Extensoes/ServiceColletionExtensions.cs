@@ -2,9 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using SaldoZen.Domain.Interfaces;
 using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Model;
 using SaldoZen.Infraestrutura.Auth;
+using SaldoZen.Infraestrutura.Repositories;
 using SaldoZen.Infraestrutura.Repositories.Base;
 using System.Text;
 
@@ -15,6 +17,7 @@ namespace SaldoZen.Infraestrutura.Extensoes
         public static IServiceCollection AddInfraestrutura(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAddAuth(configuration);
 
