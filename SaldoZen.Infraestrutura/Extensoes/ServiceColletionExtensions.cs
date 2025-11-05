@@ -4,10 +4,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SaldoZen.Domain.Interfaces;
 using SaldoZen.Domain.Interfaces.Base;
+using SaldoZen.Domain.Interfaces.PlanoConta;
 using SaldoZen.Domain.Model;
 using SaldoZen.Infraestrutura.Auth;
 using SaldoZen.Infraestrutura.Repositories;
 using SaldoZen.Infraestrutura.Repositories.Base;
+using SaldoZen.Infraestrutura.Repositories.PlanoConta;
 using System.Text;
 
 namespace SaldoZen.Infraestrutura.Extensoes
@@ -18,6 +20,7 @@ namespace SaldoZen.Infraestrutura.Extensoes
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IPlanoContasRepository, PlanoContasRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAddAuth(configuration);
 
@@ -44,7 +47,6 @@ namespace SaldoZen.Infraestrutura.Extensoes
                 });
             return services;
         }
-
 
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SaldoZen.Aplicacao.Extensions;
 using SaldoZen.Infraestrutura.Context;
 using SaldoZen.Infraestrutura.Extensoes;
 using SaldoZen.MiddlewareExecption;
@@ -13,8 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SaldoZenContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddInfraestrutura(builder.Configuration);
 //builder.Services.AddAddAuth();
+builder.Services.AddInfraestrutura(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 

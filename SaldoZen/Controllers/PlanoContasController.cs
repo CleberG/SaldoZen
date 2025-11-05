@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SaldoZen.Aplicacao.Commands.InsertPlanoContas;
+using SaldoZen.Aplicacao.Commands.UpdatePlanoContas;
+using SaldoZen.Aplicacao.Queries.PlanosContas.GetAllPlanoContas;
 using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Model;
 
@@ -9,17 +13,45 @@ namespace SaldoZen.Controllers
     public class PlanoContasController : Controller
     {
         private readonly IRepositoryBase<PlanoContas> _repository;
+        private readonly IMediator _mediator;
 
-        public PlanoContasController(IRepositoryBase<PlanoContas> repository)
+        public PlanoContasController(IRepositoryBase<PlanoContas> repository, IMediator mediator)
         {
             _repository = repository;
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(InsertPlanoContasCommand command)
+        {
+            var result = await _mediator.Send(command);
+            if(!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdatePlanoContasCommands command)
+        {
+            var result = await _mediator.Send(command);
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+
+            return Ok(result);
         }
 
         [HttpGet]
-        public async Task<List<PlanoContas>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var query = await _repository.GetAllAsync(); 
-            return query.ToList();
+            var query = new GetAllPlanoContasQuery();
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
         }
 
         [HttpGet("{id}")]

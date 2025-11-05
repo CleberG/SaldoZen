@@ -7,8 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Commands\DeletePlanoContas\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
+    <Folder Include="Queries\GetPlanoContasById\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SaldoZen.Domain\SaldoZen.Domain.csproj" />
   </ItemGroup>
 
 </Project>

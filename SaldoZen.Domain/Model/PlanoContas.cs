@@ -20,5 +20,13 @@ namespace SaldoZen.Domain.Model
             Tipo = tipo;
             Descricao = descricao;
         }
+
+
+        public void Update(ETipoPlano tipo, string descricao)
+        {
+            Tipo = tipo;
+            Descricao = descricao;
+            AlteradoEm = DateTime.UtcNow;
+        }
     }
 }
