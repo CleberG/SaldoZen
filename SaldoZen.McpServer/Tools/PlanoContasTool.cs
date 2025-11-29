@@ -1,41 +1,33 @@
-﻿using ModelContextProtocol;
-using ModelContextProtocol.Server;
+﻿using ModelContextProtocol.Server;
 using SaldoZen.McpServer.HttpClients;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace SaldoZen.McpServer.Tools
 {
+
     [McpServerToolType]
-    public static class PlanoContasTool
+    public static class PlanoContasTools
     {
-
-
-        [McpServerToolType]
-        public static class LivrariaTools
+        [McpServerTool, Description("Busca e retorna todos os planos de contas cadastrados no sistema.")]
+        public static async Task<string> ObterPlanosContas(PlanoContasClient planoContasClient)
         {
-            [McpServerTool, Description("Busca os planos de contas, definindo um filtro opcional por título")]
-            public static async Task<string> ObterLivros(PlanoContasClient planoContasClient,
-                [Description("Filtro opcional pelo título do livro")] string titulo)
+            try
             {
-                try
+                var planosContas = await planoContasClient.ObterPlanosContas();
+                return JsonSerializer.Serialize(planosContas, new JsonSerializerOptions
                 {
-                    var livros = await planoContasClient.ObterPlanosContas(titulo);
-                    return livros.Count == 0
-                        ? "Nenhum livro encontrado"
-                        : JsonSerializer.Serialize(livros);
-                }
-                catch (Exception ex)
+                    WriteIndented = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return JsonSerializer.Serialize(new
                 {
-                    //Log
-                    return $"Erro ao buscar livros: {ex.Message}";
-                }
+                    erro = true,
+                    mensagem = ex.Message,
+                    detalhes = ex.ToString()
+                });
             }
         }
     }

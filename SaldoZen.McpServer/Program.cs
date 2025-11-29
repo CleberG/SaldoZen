@@ -1,20 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ModelContextProtocol;
-using ModelContextProtocol.Protocol;
-using SaldoZen.McpServer.Tools;
 using Microsoft.Extensions.Logging;
-using ModelContextProtocol.Server;
+using ModelContextProtocol.Protocol;
 using SaldoZen.McpServer.HttpClients;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-// Adicione logging detalhado
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-builder.Logging.SetMinimumLevel(LogLevel.Debug);
-
-Console.WriteLine("=== Iniciando SaldoZen MCP Server ===");
 
 builder.Services.AddMcpServer(configureOptions =>
 {
@@ -23,15 +14,18 @@ builder.Services.AddMcpServer(configureOptions =>
         Name = "SaldoZen Financeiro",
         Version = "1.0.0"
     };
-    Console.WriteLine($"MCP Server configurado: {configureOptions.ServerInfo.Name}");
 })
 .WithStdioServerTransport()
 .WithToolsFromAssembly();
 
-Console.WriteLine("Transport STDIO configurado");
 
 builder.Services.AddHttpClient<PlanoContasClient>(client =>
 {
+    //var baseAddress = builder.Configuration["ApiSettings:BaseUrl"];
+    //if (string.IsNullOrEmpty(baseAddress))
+    //{
+    //    throw new InvalidOperationException("ApiSettings:BaseUrl not configured in appsettings.json");
+    //}
     client.BaseAddress = new Uri("https://localhost:7130/api/");
     client.Timeout = TimeSpan.FromSeconds(30);
 })
@@ -48,10 +42,8 @@ builder.Services.AddHttpClient<PlanoContasClient>(client =>
     return handler;
 });
 
-Console.WriteLine("HttpClient configurado");
-
+builder.Logging.ClearProviders();
 var app = builder.Build();
 
-Console.WriteLine("=== Servidor MCP pronto para conexões ===");
 
 await app.RunAsync();

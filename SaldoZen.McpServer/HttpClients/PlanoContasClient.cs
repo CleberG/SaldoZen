@@ -1,12 +1,6 @@
 ﻿using SaldoZen.McpServer.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace SaldoZen.McpServer.HttpClients
 {
@@ -24,7 +18,7 @@ namespace SaldoZen.McpServer.HttpClients
             };
         }
 
-        public async Task<List<PlanoContasResponde>> ObterPlanosContas(string? titulo = null)
+        public async Task<List<PlanoContasResponde>> ObterPlanosContas()
         {
             var url = "PlanoContas";
             var response = await _httpClient.GetAsync(url);
@@ -33,7 +27,16 @@ namespace SaldoZen.McpServer.HttpClients
                 return new List<PlanoContasResponde>();
 
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadFromJsonAsync<List<PlanoContasResponde>>(_jsonOptions);
+
+            var apiResult = await response.Content.ReadFromJsonAsync<ApiResult<List<PlanoContasResponde>>>(_jsonOptions);
+
+            if (apiResult != null && apiResult.IsSuccess && apiResult.Data != null)
+            {
+                return apiResult.Data;
+            }
+
+            // Return empty list if call was not successful or data is null
+            return new List<PlanoContasResponde>();
         }
     }
 }
