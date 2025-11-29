@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using SaldoZen.Aplicacao.Commands.InsertPlanoContas;
 using SaldoZen.Aplicacao.Commands.UpdatePlanoContas;
-using SaldoZen.Aplicacao.Queries.GetPlanoContasDetails;
 using SaldoZen.Aplicacao.Queries.PlanosContas.GetAllPlanoContas;
+using SaldoZen.Aplicacao.Queries.PlanosContas.GetPlanoContasDetails;
+using SaldoZen.Aplicacao.Queries.PlanosContas.GetPlanoContasPorDescricao;
 using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Model;
 
@@ -63,11 +64,12 @@ namespace SaldoZen.Controllers
             return Ok(result);
         }
 
-        [HttpGet("teste")]
-        public async Task<string> GetTeste()
+        [HttpGet("descricao")]
+        public async Task<IActionResult> GetPlanoContasPorDescricao(string descricao)
         {
-            var query = await _repository.GetAllAsync();
-            return "Cleber binitão";
+            var query = new GetPlanoContasPorDescricaoQuery(descricao);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
     }
 }

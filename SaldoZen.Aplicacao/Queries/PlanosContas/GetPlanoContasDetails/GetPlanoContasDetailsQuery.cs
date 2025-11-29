@@ -2,7 +2,7 @@
 using SaldoZen.Aplicacao.Dtos.Comuns;
 using SaldoZen.Aplicacao.Dtos.PlanosContas;
 
-namespace SaldoZen.Aplicacao.Queries.GetPlanoContasDetails
+namespace SaldoZen.Aplicacao.Queries.PlanosContas.GetPlanoContasDetails
 {
     public class GetPlanoContasDetailsQuery : IRequest<ResultViewModel<PlanoContasDto>>
     {

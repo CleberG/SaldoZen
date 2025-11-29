@@ -10,5 +10,6 @@ namespace SaldoZen.Domain.Interfaces.PlanoConta
 {
     public interface IPlanoContasRepository : IRepositoryBase<PlanoContas>
     {
+        Task<IEnumerable<PlanoContas>> GetByDescriptionAsync(string descricao);
     }
 }
