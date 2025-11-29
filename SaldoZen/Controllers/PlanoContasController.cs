@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SaldoZen.Aplicacao.Commands.InsertPlanoContas;
 using SaldoZen.Aplicacao.Commands.UpdatePlanoContas;
+using SaldoZen.Aplicacao.Queries.GetPlanoContasDetails;
 using SaldoZen.Aplicacao.Queries.PlanosContas.GetAllPlanoContas;
 using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Model;
@@ -55,10 +56,11 @@ namespace SaldoZen.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<List<PlanoContas>> GetById()
+        public async Task<IActionResult> GetById(int id)
         {
-            var query = await _repository.GetAllAsync();
-            return query.ToList();
+            var query = new GetPlanoContasDetailsQuery(id);
+            var result = await _mediator.Send(query);
+            return Ok(result);
         }
 
         [HttpGet("teste")]
