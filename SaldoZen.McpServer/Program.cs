@@ -19,7 +19,7 @@ builder.Services.AddMcpServer(configureOptions =>
 .WithToolsFromAssembly();
 
 
-builder.Services.AddHttpClient<PlanoContasClient>(client =>
+builder.Services.AddHttpClient<CategoriasClient>(client =>
 {
     //var baseAddress = builder.Configuration["ApiSettings:BaseUrl"];
     //if (string.IsNullOrEmpty(baseAddress))

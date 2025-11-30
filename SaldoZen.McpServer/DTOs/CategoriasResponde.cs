@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SaldoZen.McpServer.DTOs
 {
-    public class PlanoContasResponde
+    public class CategoriasResponde
     {
         public int Id { get; set; }
 

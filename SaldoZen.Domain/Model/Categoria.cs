@@ -5,24 +5,24 @@ namespace SaldoZen.Domain.Model
     /// <summary>
     /// Classe resposável por definir o tipo se vai ser receita ou despesa para categorização.
     /// </summary>
-    public class PlanoContas : EntityBase
+    public class Categoria : EntityBase
     {
-        public ETipoPlano Tipo { get; set; }
+        public ETipoCategoria Tipo { get; set; }
 
         public string Descricao { get; set; }
 
-        private PlanoContas()
+        private Categoria()
         {
         }
 
-        public PlanoContas(ETipoPlano tipo, string descricao)
+        public Categoria(ETipoCategoria tipo, string descricao)
         {
             Tipo = tipo;
             Descricao = descricao;
         }
 
 
-        public void Update(ETipoPlano tipo, string descricao)
+        public void Update(ETipoCategoria tipo, string descricao)
         {
             Tipo = tipo;
             Descricao = descricao;

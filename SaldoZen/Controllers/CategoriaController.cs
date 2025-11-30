@@ -1,30 +1,30 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SaldoZen.Aplicacao.Commands.InsertPlanoContas;
-using SaldoZen.Aplicacao.Commands.UpdatePlanoContas;
-using SaldoZen.Aplicacao.Queries.PlanosContas.GetAllPlanoContas;
-using SaldoZen.Aplicacao.Queries.PlanosContas.GetPlanoContasDetails;
-using SaldoZen.Aplicacao.Queries.PlanosContas.GetPlanoContasPorDescricao;
+using SaldoZen.Aplicacao.Commands.Categorias.InsertCategorias;
+using SaldoZen.Aplicacao.Commands.Categorias.UpdateCategorias;
+using SaldoZen.Aplicacao.Queries.Categorias.GetAllCategorias;
+using SaldoZen.Aplicacao.Queries.Categorias.GetCategoriasDetails;
+using SaldoZen.Aplicacao.Queries.Categorias.GetCategoriasPorDescricao;
 using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Model;
 
 namespace SaldoZen.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class PlanoContasController : Controller
+    [Route("api/categorias")]
+    public class CategoriaController : Controller
     {
-        private readonly IRepositoryBase<PlanoContas> _repository;
+        private readonly IRepositoryBase<Categoria> _repository;
         private readonly IMediator _mediator;
 
-        public PlanoContasController(IRepositoryBase<PlanoContas> repository, IMediator mediator)
+        public CategoriaController(IRepositoryBase<Categoria> repository, IMediator mediator)
         {
             _repository = repository;
             _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(InsertPlanoContasCommand command)
+        public async Task<IActionResult> Post(InsertCategoriasCommand command)
         {
             var result = await _mediator.Send(command);
             if(!result.IsSuccess)
@@ -36,7 +36,7 @@ namespace SaldoZen.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UpdatePlanoContasCommands command)
+        public async Task<IActionResult> Update(UpdateCategoriasCommands command)
         {
             var result = await _mediator.Send(command);
             if (!result.IsSuccess)
@@ -50,7 +50,7 @@ namespace SaldoZen.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var query = new GetAllPlanoContasQuery();
+            var query = new GetAllCategoriasQuery();
             var result = await _mediator.Send(query);
 
             return Ok(result);
@@ -59,7 +59,7 @@ namespace SaldoZen.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetPlanoContasDetailsQuery(id);
+            var query = new GetCategoriasDetailsQuery(id);
             var result = await _mediator.Send(query);
             return Ok(result);
         }
@@ -67,7 +67,7 @@ namespace SaldoZen.Controllers
         [HttpGet("descricao")]
         public async Task<IActionResult> GetPlanoContasPorDescricao(string descricao)
         {
-            var query = new GetPlanoContasPorDescricaoQuery(descricao);
+            var query = new GetCategoriasPorDescricaoQuery(descricao);
             var result = await _mediator.Send(query);
             return Ok(result);
         }

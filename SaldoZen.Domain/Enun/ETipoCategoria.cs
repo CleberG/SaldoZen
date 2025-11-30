@@ -3,7 +3,7 @@
     /// <summary>
     /// O tipo de plano de contas receita ou despesa
     /// </summary>
-    public enum ETipoPlano
+    public enum ETipoCategoria
     {
         None = 0,
         Receita = 1,

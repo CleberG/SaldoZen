@@ -4,15 +4,15 @@ using SaldoZen.Domain.Model;
 using SaldoZen.Infraestrutura.Context;
 using SaldoZen.Infraestrutura.Repositories.Base;
 
-namespace SaldoZen.Infraestrutura.Repositories.PlanoConta
+namespace SaldoZen.Infraestrutura.Repositories.Categorias
 {
-    public class PlanoContasRepository : RepositoryBase<PlanoContas>, IPlanoContasRepository
+    public class CategoriaRepository : RepositoryBase<Categoria>, ICategoriaRepository
     {
-        public PlanoContasRepository(SaldoZenContext context) : base(context)
+        public CategoriaRepository(SaldoZenContext context) : base(context)
         {
         }
 
-        public async Task<IEnumerable<PlanoContas>> GetByDescriptionAsync(string descricao)
+        public async Task<IEnumerable<Categoria>> GetByDescriptionAsync(string descricao)
         {
             return await ListBy(pc => pc.Descricao.Contains(descricao))
                 .ToListAsync();

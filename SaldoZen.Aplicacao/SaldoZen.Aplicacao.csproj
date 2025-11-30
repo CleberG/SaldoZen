@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\DeletePlanoContas\" />
-    <Folder Include="Interfaces\" />
+    <Folder Include="Commands\Categorias\DeleteCategorias\" />
   </ItemGroup>
 
   <ItemGroup>

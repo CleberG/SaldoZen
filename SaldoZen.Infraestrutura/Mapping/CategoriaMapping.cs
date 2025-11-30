@@ -4,9 +4,9 @@ using SaldoZen.Domain.Model;
 
 namespace SaldoZen.Infraestrutura.Mapping
 {
-    public class PlanoContasMapping : IEntityTypeConfiguration<PlanoContas>
+    public class CategoriaMapping : IEntityTypeConfiguration<Categoria>
     {
-        public void Configure(EntityTypeBuilder<PlanoContas> builder)
+        public void Configure(EntityTypeBuilder<Categoria> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Descricao).IsRequired().HasMaxLength(150);

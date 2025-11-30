@@ -3,20 +3,20 @@ using SaldoZen.Aplicacao.Dtos.Comuns;
 using SaldoZen.Domain.Interfaces.Base;
 using SaldoZen.Domain.Interfaces.PlanoConta;
 
-namespace SaldoZen.Aplicacao.Commands.UpdatePlanoContas
+namespace SaldoZen.Aplicacao.Commands.Categorias.UpdateCategorias
 {
-    public class UpdatePlanoContasHandler : IRequestHandler<UpdatePlanoContasCommands, ResultViewModel>
+    public class UpdateCategoriasHandler : IRequestHandler<UpdateCategoriasCommands, ResultViewModel>
     {
-        readonly IPlanoContasRepository _planoContasRepository;
+        readonly ICategoriaRepository _planoContasRepository;
         readonly IUnitOfWork _IUnitOfWork;
 
-        public UpdatePlanoContasHandler(IPlanoContasRepository planoContasRepository = null, IUnitOfWork iUnitOfWork = null)
+        public UpdateCategoriasHandler(ICategoriaRepository planoContasRepository = null, IUnitOfWork iUnitOfWork = null)
         {
             _planoContasRepository = planoContasRepository;
             _IUnitOfWork = iUnitOfWork;
         }
 
-        public async Task<ResultViewModel> Handle(UpdatePlanoContasCommands request, CancellationToken cancellationToken)
+        public async Task<ResultViewModel> Handle(UpdateCategoriasCommands request, CancellationToken cancellationToken)
         {
             var planoContas = await _planoContasRepository.GetByIdAsync(request.Id);
             if (planoContas == null)

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SaldoZen.Domain.Interfaces.PlanoConta
 {
-    public interface IPlanoContasRepository : IRepositoryBase<PlanoContas>
+    public interface ICategoriaRepository : IRepositoryBase<Categoria>
     {
-        Task<IEnumerable<PlanoContas>> GetByDescriptionAsync(string descricao);
+        Task<IEnumerable<Categoria>> GetByDescriptionAsync(string descricao);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SaldoZen.Aplicacao.Commands.InsertPlanoContas;
+using SaldoZen.Aplicacao.Commands.Categorias.InsertCategorias;
 
 namespace SaldoZen.Aplicacao.Extensions
 {
@@ -16,7 +16,7 @@ namespace SaldoZen.Aplicacao.Extensions
         private static IServiceCollection AddHandlers(this IServiceCollection services)
         {
             services.AddMediatR(config =>
-                config.RegisterServicesFromAssemblyContaining<InsertPlanoContasCommand>());
+                config.RegisterServicesFromAssemblyContaining<InsertCategoriasCommand>());
 
             return services;
         }

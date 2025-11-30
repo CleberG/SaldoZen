@@ -9,7 +9,7 @@ using SaldoZen.Domain.Model;
 using SaldoZen.Infraestrutura.Auth;
 using SaldoZen.Infraestrutura.Repositories;
 using SaldoZen.Infraestrutura.Repositories.Base;
-using SaldoZen.Infraestrutura.Repositories.PlanoConta;
+using SaldoZen.Infraestrutura.Repositories.Categorias;
 using System.Text;
 
 namespace SaldoZen.Infraestrutura.Extensoes
@@ -20,7 +20,7 @@ namespace SaldoZen.Infraestrutura.Extensoes
         {
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<IPlanoContasRepository, PlanoContasRepository>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAddAuth(configuration);
 

@@ -2,13 +2,13 @@
 using SaldoZen.Aplicacao.Dtos.Comuns;
 using SaldoZen.Domain.Enun;
 
-namespace SaldoZen.Aplicacao.Commands.UpdatePlanoContas
+namespace SaldoZen.Aplicacao.Commands.Categorias.UpdateCategorias
 {
-    public class UpdatePlanoContasCommands : IRequest<ResultViewModel>
+    public class UpdateCategoriasCommands : IRequest<ResultViewModel>
     {
         public int Id { get; set; }
 
-        public ETipoPlano Tipo { get; set; }
+        public ETipoCategoria Tipo { get; set; }
 
         public string Descricao { get; set; }
     }

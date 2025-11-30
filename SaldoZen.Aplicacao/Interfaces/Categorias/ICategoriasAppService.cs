@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SaldoZen.Aplicacao.Services
+namespace SaldoZen.Aplicacao.Interfaces.Categorias
 {
-    internal class PlanoContasAppService
+    public interface ICategoriasAppService
     {
     }
 }

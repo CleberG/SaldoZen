@@ -4,12 +4,12 @@ using System.Text.Json;
 
 namespace SaldoZen.McpServer.HttpClients
 {
-    public class PlanoContasClient
+    public class CategoriasClient
     {
         readonly HttpClient _httpClient;
         readonly JsonSerializerOptions _jsonOptions;
 
-        public PlanoContasClient(HttpClient httpClient)
+        public CategoriasClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
             _jsonOptions = new JsonSerializerOptions
@@ -18,17 +18,17 @@ namespace SaldoZen.McpServer.HttpClients
             };
         }
 
-        public async Task<List<PlanoContasResponde>> ObterPlanosContas()
+        public async Task<List<CategoriasResponde>> ObterCategorias()
         {
-            var url = "PlanoContas";
+            var url = "categorias";
             var response = await _httpClient.GetAsync(url);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-                return new List<PlanoContasResponde>();
+                return new List<CategoriasResponde>();
 
             response.EnsureSuccessStatusCode();
 
-            var apiResult = await response.Content.ReadFromJsonAsync<ApiResult<List<PlanoContasResponde>>>(_jsonOptions);
+            var apiResult = await response.Content.ReadFromJsonAsync<ApiResult<List<CategoriasResponde>>>(_jsonOptions);
 
             if (apiResult != null && apiResult.IsSuccess && apiResult.Data != null)
             {
@@ -36,7 +36,7 @@ namespace SaldoZen.McpServer.HttpClients
             }
 
             // Return empty list if call was not successful or data is null
-            return new List<PlanoContasResponde>();
+            return new List<CategoriasResponde>();
         }
     }
 }

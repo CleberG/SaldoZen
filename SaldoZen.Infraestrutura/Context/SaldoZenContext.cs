@@ -7,7 +7,7 @@ namespace SaldoZen.Infraestrutura.Context
     {
         public SaldoZenContext(DbContextOptions<SaldoZenContext> options) : base(options) { }
 
-        public DbSet<PlanoContas> PlanoContas { get; set; }
+        public DbSet<Categoria> PlanoContas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

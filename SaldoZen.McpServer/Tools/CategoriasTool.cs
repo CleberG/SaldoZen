@@ -7,14 +7,14 @@ namespace SaldoZen.McpServer.Tools
 {
 
     [McpServerToolType]
-    public static class PlanoContasTools
+    public static class CategoriasTools
     {
-        [McpServerTool, Description("Busca e retorna todos os planos de contas cadastrados no sistema.")]
-        public static async Task<string> ObterPlanosContas(PlanoContasClient planoContasClient)
+        [McpServerTool, Description("Busca e retorna todas as Categorias cadastradams no sistema.")]
+        public static async Task<string> ObterCategorias(CategoriasClient planoContasClient)
         {
             try
             {
-                var planosContas = await planoContasClient.ObterPlanosContas();
+                var planosContas = await planoContasClient.ObterCategorias();
                 return JsonSerializer.Serialize(planosContas, new JsonSerializerOptions
                 {
                     WriteIndented = true
