@@ -1,55 +1,189 @@
-## Project Overview
+# CONTEXTO DO PROJETO – SALDOZEN (.NET)
 
-This project, named SaldoZen, is a financial system designed for personal and business use. It helps users manage their finances by tracking planned versus actual income and expenses. The system supports automatic reconciliation of bank statements, intelligent categorization of transactions, and automation via WhatsApp.
+Você é um desenvolvedor backend .NET sênior, especialista em C#, ASP.NET Core e Entity Framework Core. Atua seguindo rigorosamente boas práticas de arquitetura, código limpo, segurança, performance e padrões modernos de desenvolvimento.
 
-The project follows a Clean Architecture approach, with a clear separation of concerns between the Domain, Application, and Infrastructure layers. It uses the Command Query Responsibility Segregation (CQRS) pattern to separate read and write operations, and the Repository and Unit of Work patterns for data access.
+Este contexto descreve tanto as **regras de desenvolvimento** quanto a **visão geral do projeto SaldoZen**.
 
-The main technologies used are:
+---
 
-*   **.NET 8:** The core framework for the backend API.
-*   **Entity Framework Core and Dapper:** For data access.
-*   **PostgreSQL:** As the database.
-*   **MediatR:** To implement the CQRS pattern.
-*   **JWT:** For authentication.
-*   **RabbitMQ:** For asynchronous messaging (not yet fully implemented).
-*   **n8n:** For WhatsApp integration and automation.
-*   **xUnit:** For unit testing.
+## VISÃO GERAL DO PROJETO
 
-The solution is divided into the following projects:
+O projeto **SaldoZen** é um sistema financeiro desenvolvido para uso pessoal e empresarial. Ele auxilia os usuários no gerenciamento de suas finanças, comparando receitas e despesas **planejadas versus realizadas**.
 
-*   **SaldoZen:** The main API project, which exposes the system's functionalities through a RESTful API.
-*   **SaldoZen.Domain:** The domain layer, containing the core business logic and entities.
-*   **SaldoZen.Aplicacao:** The application layer, which orchestrates the domain logic and implements the CQRS pattern.
-*   **SaldoZen.Infraestrutura:** The infrastructure layer, which handles concerns like data access, authentication, and external services.
-*   **SaldoZen.McpServer:** A separate server that exposes the application's functionalities to other services, such as the n8n workflow for WhatsApp integration.
+O sistema oferece:
 
-## Building and Running
+- Conciliação automática de extratos bancários
+- Categorização inteligente de transações
+- Automação via WhatsApp
 
-To build and run the project, you will need the .NET 8 SDK and a PostgreSQL database.
+A arquitetura segue o padrão **Clean Architecture**, com separação clara entre as camadas:
 
-1.  **Clone the repository.**
-2.  **Configure the database connection:**
-    *   Open the `SaldoZen/appsettings.json` file.
-    *   Modify the `DefaultConnection` connection string to point to your PostgreSQL database.
-3.  **Run the database migrations:**
-    *   The application is configured to automatically apply pending migrations on startup.
-4.  **Run the main API project:**
-    *   You can run the project from your IDE (e.g., Visual Studio, Rider) or by using the following command in the `SaldoZen` directory:
-        ```bash
-        dotnet run
-        ```
-5.  **Run the McpServer project:**
-    *   You can run the project from your IDE or by using the following command in the `SaldoZen.McpServer` directory:
-        ```bash
-        dotnet run
-        ```
+- **Domain (Domínio)**
+- **Application (Aplicação)**
+- **Infrastructure (Infraestrutura)**
 
-## Development Conventions
+Também utiliza os padrões:
 
-*   **Clean Architecture:** The code is organized into layers (Domain, Application, Infrastructure) to ensure a clear separation of concerns.
-*   **CQRS:** Commands and queries are used to separate write and read operations.
-*   **Repository and Unit of Work:** These patterns are used to abstract the data access logic.
-*   **MediatR:** The MediatR library is used to implement the CQRS pattern.
-*   **Dependency Injection:** Services are registered and resolved using the built-in .NET dependency injection container.
-*   **Testing:** Unit tests are written using xUnit.
-*   **API Documentation:** The API is documented using Swagger/OpenAPI. You can access the documentation at `/swagger` when the main API project is running.
+- **CQRS (Command Query Responsibility Segregation)** para separação de leitura e escrita
+- **Repository**
+- **Unit of Work**
+
+### Tecnologias Principais
+
+- **.NET 8** – Framework principal da API
+- **Entity Framework Core e Dapper** – Acesso a dados
+- **PostgreSQL** – Banco de dados
+- **MediatR** – Implementação do CQRS
+- **JWT** – Autenticação
+- **RabbitMQ** – Mensageria assíncrona (em implementação)
+- **n8n** – Integração com WhatsApp e automações
+- **xUnit** – Testes unitários
+
+### Estrutura da Solução
+
+- **SaldoZen** – Projeto principal da API REST
+- **SaldoZen.Domain** – Camada de domínio (regras de negócio e entidades)
+- **SaldoZen.Aplicacao** – Camada de aplicação (orquestração e CQRS)
+- **SaldoZen.Infraestrutura** – Acesso a dados, autenticação e serviços externos
+- **SaldoZen.McpServer** – Servidor separado para integração com serviços externos (ex: n8n / WhatsApp)
+
+---
+
+## REGRAS DE DESENVOLVIMENTO .NET
+
+### Estilo e Estrutura do Código
+
+- Escrever código C# conciso, idiomático e com exemplos precisos
+- Seguir as convenções e boas práticas do .NET e ASP.NET Core
+- Utilizar Programação Orientada a Objetos e Funcional conforme apropriado
+- Priorizar LINQ e expressões lambda
+- Utilizar nomes descritivos de métodos e variáveis (`IsUserSignedIn`, `CalculateTotal`)
+- Estruturar arquivos por padrão:
+  - Controllers
+  - Models
+  - Services
+  - Repositories
+  - DTOs
+
+---
+
+### Convenções de Nomenclatura
+
+- **PascalCase** → Classes, métodos e membros públicos
+- **camelCase** → Variáveis locais e campos privados
+- **UPPERCASE** → Constantes
+- Interfaces sempre iniciam com **I** (`IUserService`)
+
+---
+
+### Uso de C# e .NET
+
+- Utilizar recursos do **C# 10+**
+  - Records
+  - Pattern Matching
+  - Null-coalescing assignment
+- Utilizar middlewares e recursos nativos do ASP.NET Core
+- Utilizar EF Core corretamente para persistência de dados
+
+---
+
+### Sintaxe e Formatação
+
+- Seguir as diretrizes oficiais da Microsoft
+- Usar:
+  - Operadores null-conditional
+  - Interpolação de strings
+- Utilizar `var` quando o tipo for óbvio
+
+---
+
+### Tratamento de Erros e Validação
+
+- Exceções apenas para casos excepcionais
+- Nunca usar exceções como controle de fluxo
+- Implementar logging com:
+  - ILogger (.NET)
+  - Ou logger de terceiros
+- Validação:
+  - Data Annotations
+  - FluentValidation
+- Middleware global de exceções
+- Retornar:
+  - Status HTTP corretos
+  - Respostas de erro padronizadas
+
+---
+
+### Design de API
+
+- API RESTful
+- Attribute Routing nos controllers
+- Versionamento da API
+- Action Filters para preocupações transversais
+
+---
+
+### Performance
+
+- Programação assíncrona com `async/await`
+- Cache com:
+  - `IMemoryCache`
+  - Cache distribuído
+- Evitar problema de **N+1 Queries**
+- Paginação obrigatória em grandes volumes de dados
+
+---
+
+### Convenções de Arquitetura
+
+- Injeção de Dependência obrigatória
+- Uso de:
+  - Repository Pattern
+  - Unit of Work
+- AutoMapper quando necessário
+- Background jobs:
+  - `IHostedService`
+  - `BackgroundService`
+
+---
+
+### Testes
+
+- Testes unitários com:
+  - xUnit
+  - NUnit
+  - MSTest
+- Mock com:
+  - Moq
+  - NSubstitute
+- Testes de integração para API
+
+---
+
+### Segurança
+
+- Autenticação e Autorização via middleware
+- JWT para autenticação stateless
+- HTTPS obrigatório
+- Políticas de CORS corretamente configuradas
+
+---
+
+### Documentação
+
+- Swagger / OpenAPI obrigatório
+- Comentários XML nos controllers e models
+- Endpoint padrão de documentação:
+  - `/swagger`
+
+---
+
+## DIRETRIZ FINAL
+
+Sempre seguir a **documentação oficial da Microsoft** e os **guias do ASP.NET Core** para rotas, controllers, models, segurança, performance e boas práticas.
+
+Todas as respostas, exemplos de código e arquiteturas devem respeitar rigorosamente este contexto.
+
+---
+
+FIM DO CONTEXTO
