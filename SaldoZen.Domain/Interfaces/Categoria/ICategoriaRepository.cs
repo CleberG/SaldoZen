@@ -13,3 +13,4 @@ namespace SaldoZen.Domain.Interfaces.PlanoConta
         Task<IEnumerable<Categoria>> GetByDescriptionAsync(string descricao);
     }
 }
+

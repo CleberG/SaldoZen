@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -21,6 +21,8 @@ namespace SaldoZen.Infraestrutura.Extensoes
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<IPrevisaoRepository, PrevisaoRepository>();
+            services.AddScoped<IBaixaRepository, BaixaRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddAddAuth(configuration);
 
