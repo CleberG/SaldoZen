@@ -42,6 +42,24 @@ builder.Services.AddHttpClient<CategoriasClient>(client =>
     return handler;
 });
 
+builder.Services.AddHttpClient<PrevisaoClient>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7130/api/");
+    client.Timeout = TimeSpan.FromSeconds(30);
+})
+.ConfigurePrimaryHttpMessageHandler(() =>
+{
+    var handler = new HttpClientHandler();
+
+    if (builder.Environment.IsDevelopment())
+    {
+        handler.ServerCertificateCustomValidationCallback =
+            HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
+    }
+
+    return handler;
+});
+
 builder.Logging.ClearProviders();
 var app = builder.Build();
 
