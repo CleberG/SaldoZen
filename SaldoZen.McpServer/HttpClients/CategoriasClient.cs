@@ -112,5 +112,22 @@ namespace SaldoZen.McpServer.HttpClients
 
             return new List<CategoriasResponde>();
         }
+
+        public async Task<ApiResult<object>> DeletarCategoria(int id)
+        {
+            var url = $"categorias/{id}";
+            var response = await _httpClient.DeleteAsync(url);
+
+            response.EnsureSuccessStatusCode();
+
+            var apiResult = await response.Content.ReadFromJsonAsync<ApiResult<object>>(_jsonOptions);
+
+            if (apiResult != null && apiResult.IsSuccess)
+            {
+                return apiResult;
+            }
+
+            return new ApiResult<object> { IsSuccess = false, Message = "Falha ao deletar categoria." };
+        }
     }
 }

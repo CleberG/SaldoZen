@@ -121,5 +121,27 @@ namespace SaldoZen.McpServer.Tools
                 });
             }
         }
+
+        [McpServerTool, Description("Deleta uma categoria existente no sistema pelo seu ID.")]
+        public static async Task<string> DeletarCategoria(CategoriasClient client, int id)
+        {
+            try
+            {
+                var result = await client.DeletarCategoria(id);
+                return JsonSerializer.Serialize(result, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+            }
+            catch (Exception ex)
+            {
+                return JsonSerializer.Serialize(new
+                {
+                    erro = true,
+                    mensagem = ex.Message,
+                    detalhes = ex.ToString()
+                });
+            }
+        }
     }
 }

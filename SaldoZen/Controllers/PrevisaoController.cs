@@ -9,7 +9,6 @@ namespace SaldoZen.Controllers
 {
     [ApiController]
     [Route("api/previsoes")]
-    [Authorize]
     public class PrevisaoController : ControllerBase
     {
         private readonly IMediator _mediator;

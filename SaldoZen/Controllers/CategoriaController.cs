@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SaldoZen.Aplicacao.Commands.Categorias.DeleteCategorias;
 using SaldoZen.Aplicacao.Commands.Categorias.InsertCategorias;
 using SaldoZen.Aplicacao.Commands.Categorias.UpdateCategorias;
 using SaldoZen.Aplicacao.Queries.Categorias.GetAllCategorias;
@@ -47,6 +48,18 @@ namespace SaldoZen.Controllers
             return Ok(result);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var command = new DeleteCategoriasCommand(id);
+            var result = await _mediator.Send(command);
+            if (!result.IsSuccess)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -71,5 +84,6 @@ namespace SaldoZen.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+       
     }
 }
