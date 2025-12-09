@@ -44,7 +44,7 @@ namespace SaldoZen.McpServer.Tools
         {
             try
             {
-                var request = new PrevisaoRequest { Descricao = descricao, Valor = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId, Status = status };
+                var request = new PrevisaoRequest { Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId, Status = status };
                 var previsao = await client.CriarPrevisao(request);
                 return JsonSerializer.Serialize(previsao, new JsonSerializerOptions { WriteIndented = true });
             }
@@ -59,7 +59,7 @@ namespace SaldoZen.McpServer.Tools
         {
             try
             {
-                var request = new PrevisaoRequest { Id = id, Descricao = descricao, Valor = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId, Status = status };
+                var request = new PrevisaoRequest { Id = id, Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId, Status = status };
                 var previsao = await client.AtualizarPrevisao(id, request);
                 return JsonSerializer.Serialize(previsao, new JsonSerializerOptions { WriteIndented = true });
             }

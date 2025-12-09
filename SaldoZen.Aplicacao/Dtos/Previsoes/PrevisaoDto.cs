@@ -14,7 +14,7 @@ namespace SaldoZen.Aplicacao.Dtos.Previsoes
         public string CategoriaDescricao { get; set; }
         public DateTime DataVencimento { get; set; }
         public string Observacoes { get; set; }
-        public EStatus Status { get; set; }
+        public StatusDto Status { get; set; }
         public decimal ValorOriginal { get; set; }
         public decimal ValorTotal { get; set; }
         public decimal Juros { get; set; }
@@ -35,7 +35,7 @@ namespace SaldoZen.Aplicacao.Dtos.Previsoes
                 CategoriaDescricao = previsao.Categoria?.Descricao,
                 DataVencimento = previsao.DataVencimento,
                 Observacoes = previsao.Observacoes,
-                Status = previsao.Status,
+                Status = new StatusDto { Valor = (int)previsao.Status,  Descricao = previsao.Status.ToString() },
                 ValorOriginal = previsao.ValorOriginal,
                 ValorTotal = previsao.ValorTotal,
                 Juros = previsao.Juros,
