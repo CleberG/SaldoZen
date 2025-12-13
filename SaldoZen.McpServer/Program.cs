@@ -21,11 +21,6 @@ builder.Services.AddMcpServer(configureOptions =>
 
 builder.Services.AddHttpClient<CategoriasClient>(client =>
 {
-    //var baseAddress = builder.Configuration["ApiSettings:BaseUrl"];
-    //if (string.IsNullOrEmpty(baseAddress))
-    //{
-    //    throw new InvalidOperationException("ApiSettings:BaseUrl not configured in appsettings.json");
-    //}
     client.BaseAddress = new Uri("https://localhost:7130/api/");
     client.Timeout = TimeSpan.FromSeconds(30);
 })

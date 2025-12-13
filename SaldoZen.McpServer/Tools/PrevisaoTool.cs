@@ -40,11 +40,11 @@ namespace SaldoZen.McpServer.Tools
         }
 
         [McpServerTool, Description("Cria uma nova previsão.")]
-        public static async Task<string> CriarPrevisao(PrevisaoClient client, string descricao, decimal valor, DateTime dataVencimento, int categoriaId, int status)
+        public static async Task<string> CriarPrevisao(PrevisaoClient client, string descricao, decimal valor, DateTime dataVencimento, int categoriaId)
         {
             try
             {
-                var request = new PrevisaoRequest { Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId, Status = status };
+                var request = new PrevisaoRequest { Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId };
                 var previsao = await client.CriarPrevisao(request);
                 return JsonSerializer.Serialize(previsao, new JsonSerializerOptions { WriteIndented = true });
             }
@@ -55,11 +55,11 @@ namespace SaldoZen.McpServer.Tools
         }
 
         [McpServerTool, Description("Atualiza uma previsão existente.")]
-        public static async Task<string> AtualizarPrevisao(PrevisaoClient client, int id, string descricao, decimal valor, DateTime dataVencimento, int categoriaId, int status)
+        public static async Task<string> AtualizarPrevisao(PrevisaoClient client, int id, string descricao, decimal valor, DateTime dataVencimento, int categoriaId)
         {
             try
             {
-                var request = new PrevisaoRequest { Id = id, Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId, Status = status };
+                var request = new PrevisaoRequest { Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId };
                 var previsao = await client.AtualizarPrevisao(id, request);
                 return JsonSerializer.Serialize(previsao, new JsonSerializerOptions { WriteIndented = true });
             }
@@ -84,11 +84,19 @@ namespace SaldoZen.McpServer.Tools
         }
 
         [McpServerTool, Description("Adiciona uma baixa (pagamento) a uma previsão.")]
-        public static async Task<string> AdicionarBaixa(PrevisaoClient client, int previsaoId, decimal valor, DateTime dataPagamento)
+        public static async Task<string> AdicionarBaixa(PrevisaoClient client, int previsaoId, decimal valorOriginal, DateTime dataBaixa, decimal juros = 0, decimal multa = 0, decimal desconto = 0)
         {
             try
             {
-                var request = new BaixaRequest { PrevisaoId = previsaoId, Valor = valor, DataPagamento = dataPagamento };
+                var request = new BaixaRequest 
+                { 
+                    PrevisaoId = previsaoId, 
+                    ValorOriginal = valorOriginal, 
+                    DataBaixa = dataBaixa,
+                    Juros = juros,
+                    Multa = multa,
+                    Desconto = desconto
+                };
                 var baixa = await client.AdicionarBaixa(previsaoId, request);
                 return JsonSerializer.Serialize(baixa, new JsonSerializerOptions { WriteIndented = true });
             }

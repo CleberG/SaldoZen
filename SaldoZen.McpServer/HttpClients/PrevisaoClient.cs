@@ -1,5 +1,6 @@
 using SaldoZen.McpServer.DTOs;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -53,14 +54,25 @@ namespace SaldoZen.McpServer.HttpClients
 
         public async Task<PrevisaoResponse> CriarPrevisao(PrevisaoRequest request)
         {
-            var url = "previsoes";
-            var response = await _httpClient.PostAsJsonAsync(url, request);
+            try
+            {
+                var url = "previsoes";
+                var response = await _httpClient.PostAsJsonAsync(url, request);
 
-            response.EnsureSuccessStatusCode();
+                response.EnsureSuccessStatusCode();
 
-            var apiResult = await response.Content.ReadFromJsonAsync<ApiResult<PrevisaoResponse>>(_jsonOptions);
+                //var jsonString = await response.Content.ReadAsStringAsync();
 
-            return apiResult is { IsSuccess: true, Data: not null } ? apiResult.Data : null;
+                var apiResult = await response.Content.ReadFromJsonAsync<ApiResult<PrevisaoResponse>>(_jsonOptions);
+
+                return apiResult is { IsSuccess: true, Data: not null } ? apiResult.Data : null;
+            }
+            catch (Exception ex)
+            {
+
+                throw new ArgumentException(ex.Message);
+            }
+            
         }
 
         public async Task<PrevisaoResponse> AtualizarPrevisao(int id, PrevisaoRequest request)
