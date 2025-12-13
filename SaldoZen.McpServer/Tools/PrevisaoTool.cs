@@ -39,12 +39,28 @@ namespace SaldoZen.McpServer.Tools
             }
         }
 
-        [McpServerTool, Description("Cria uma nova previsão.")]
-        public static async Task<string> CriarPrevisao(PrevisaoClient client, string descricao, decimal valor, DateTime dataVencimento, int categoriaId)
+        [McpServerTool, Description("Cria uma nova previsão. A data de vencimento deve estar no formato YYYY-MM-DD.")]
+        public static async Task<string> CriarPrevisao(
+            PrevisaoClient client, 
+            string descricao, 
+            string valorOriginal, 
+            string dataVencimento, 
+            int categoriaId, 
+            string observacoes = "")
         {
             try
             {
-                var request = new PrevisaoRequest { Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId };
+                if (!decimal.TryParse(valorOriginal, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var valorParsed))
+                {
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'valorOriginal' não é um número válido. Use '.' como separador decimal." });
+                }
+
+                if (!DateTime.TryParse(dataVencimento, out var dataParsed))
+                {
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'dataVencimento' não é uma data válida. Use o formato YYYY-MM-DD." });
+                }
+
+                var request = new PrevisaoCreateRequest { Descricao = descricao, ValorOriginal = valorParsed, DataVencimento = dataParsed, CategoriaId = categoriaId, Observacoes = observacoes };
                 var previsao = await client.CriarPrevisao(request);
                 return JsonSerializer.Serialize(previsao, new JsonSerializerOptions { WriteIndented = true });
             }
@@ -54,12 +70,47 @@ namespace SaldoZen.McpServer.Tools
             }
         }
 
-        [McpServerTool, Description("Atualiza uma previsão existente.")]
-        public static async Task<string> AtualizarPrevisao(PrevisaoClient client, int id, string descricao, decimal valor, DateTime dataVencimento, int categoriaId)
+        [McpServerTool, Description("Atualiza uma previsão existente. A data de vencimento deve estar no formato YYYY-MM-DD.")]
+        public static async Task<string> AtualizarPrevisao(
+            PrevisaoClient client, 
+            int id, 
+            string descricao, 
+            string valorOriginal, 
+            string dataVencimento, 
+            int categoriaId, 
+            string observacoes = "", 
+            string juros = "0", 
+            string multa = "0", 
+            string desconto = "0")
         {
             try
             {
-                var request = new PrevisaoRequest { Descricao = descricao, ValorOriginal = valor, DataVencimento = dataVencimento, CategoriaId = categoriaId };
+                if (!decimal.TryParse(valorOriginal, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var valorParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'valorOriginal' não é um número válido. Use '.' como separador decimal." });
+                
+                if (!DateTime.TryParse(dataVencimento, out var dataParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'dataVencimento' não é uma data válida. Use o formato YYYY-MM-DD." });
+
+                if (!decimal.TryParse(juros, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var jurosParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'juros' não é um número válido. Use '.' como separador decimal." });
+
+                if (!decimal.TryParse(multa, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var multaParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'multa' não é um número válido. Use '.' como separador decimal." });
+
+                if (!decimal.TryParse(desconto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var descontoParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'desconto' não é um número válido. Use '.' como separador decimal." });
+
+                var request = new PrevisaoUpdateRequest 
+                { 
+                    Descricao = descricao, 
+                    ValorOriginal = valorParsed, 
+                    DataVencimento = dataParsed, 
+                    CategoriaId = categoriaId, 
+                    Observacoes = observacoes, 
+                    Juros = jurosParsed, 
+                    Multa = multaParsed, 
+                    Desconto = descontoParsed 
+                };
                 var previsao = await client.AtualizarPrevisao(id, request);
                 return JsonSerializer.Serialize(previsao, new JsonSerializerOptions { WriteIndented = true });
             }
@@ -83,19 +134,41 @@ namespace SaldoZen.McpServer.Tools
             }
         }
 
-        [McpServerTool, Description("Adiciona uma baixa (pagamento) a uma previsão.")]
-        public static async Task<string> AdicionarBaixa(PrevisaoClient client, int previsaoId, decimal valorOriginal, DateTime dataBaixa, decimal juros = 0, decimal multa = 0, decimal desconto = 0)
+        [McpServerTool, Description("Adiciona uma baixa (pagamento) a uma previsão. A data da baixa deve estar no formato YYYY-MM-DD.")]
+        public static async Task<string> AdicionarBaixa(
+            PrevisaoClient client, 
+            int previsaoId, 
+            string valorOriginal, 
+            string dataBaixa, 
+            string juros = "0", 
+            string multa = "0", 
+            string desconto = "0")
         {
             try
             {
+                if (!decimal.TryParse(valorOriginal, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var valorParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'valorOriginal' não é um número válido. Use '.' como separador decimal." });
+
+                if (!DateTime.TryParse(dataBaixa, out var dataParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'dataBaixa' não é uma data válida. Use o formato YYYY-MM-DD." });
+
+                if (!decimal.TryParse(juros, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var jurosParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'juros' não é um número válido. Use '.' como separador decimal." });
+
+                if (!decimal.TryParse(multa, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var multaParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'multa' não é um número válido. Use '.' como separador decimal." });
+
+                if (!decimal.TryParse(desconto, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var descontoParsed))
+                    return JsonSerializer.Serialize(new { erro = true, mensagem = "O parâmetro 'desconto' não é um número válido. Use '.' como separador decimal." });
+
                 var request = new BaixaRequest 
                 { 
                     PrevisaoId = previsaoId, 
-                    ValorOriginal = valorOriginal, 
-                    DataBaixa = dataBaixa,
-                    Juros = juros,
-                    Multa = multa,
-                    Desconto = desconto
+                    ValorOriginal = valorParsed, 
+                    DataBaixa = dataParsed,
+                    Juros = jurosParsed,
+                    Multa = multaParsed,
+                    Desconto = descontoParsed
                 };
                 var baixa = await client.AdicionarBaixa(previsaoId, request);
                 return JsonSerializer.Serialize(baixa, new JsonSerializerOptions { WriteIndented = true });

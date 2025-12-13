@@ -52,7 +52,7 @@ namespace SaldoZen.McpServer.HttpClients
             return apiResult is { IsSuccess: true, Data: not null } ? apiResult.Data : null;
         }
 
-        public async Task<PrevisaoResponse> CriarPrevisao(PrevisaoRequest request)
+        public async Task<PrevisaoResponse> CriarPrevisao(PrevisaoCreateRequest request)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace SaldoZen.McpServer.HttpClients
             
         }
 
-        public async Task<PrevisaoResponse> AtualizarPrevisao(int id, PrevisaoRequest request)
+        public async Task<PrevisaoResponse> AtualizarPrevisao(int id, PrevisaoUpdateRequest request)
         {
             var url = $"previsoes/{id}";
             var response = await _httpClient.PutAsJsonAsync(url, request);
