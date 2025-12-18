@@ -44,8 +44,11 @@ namespace SaldoZen.Controllers
             var result = await _mediator.Send(command);
 
             if (result.IsSuccess)
-                return CreatedAtAction(nameof(GetById), new { id = result.Data.Id }, result);
-
+            {
+                var query = new GetPrevisaoByIdQuery { Id = result.Data.Id };
+                var queryResults = await _mediator.Send(query);
+                return Ok(queryResults);
+            }
             return BadRequest(result);
         }
 
