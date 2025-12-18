@@ -4,6 +4,8 @@ using SaldoZen.Infraestrutura.Context;
 using SaldoZen.Infraestrutura.Extensoes;
 using SaldoZen.MiddlewareExecption;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 

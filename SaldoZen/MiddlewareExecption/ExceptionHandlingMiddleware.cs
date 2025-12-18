@@ -23,7 +23,7 @@ namespace SaldoZen.MiddlewareExecption
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Erro inesperado.");
+                _logger.LogError(ex, $"Erro inesperado: {ex.Message}");
                 await HandleExceptionAsync(context, ex);
             }
         }

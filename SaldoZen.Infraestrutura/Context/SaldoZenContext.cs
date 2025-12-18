@@ -7,8 +7,6 @@ namespace SaldoZen.Infraestrutura.Context
     {
         public SaldoZenContext(DbContextOptions<SaldoZenContext> options) : base(options) { }
 
-        public DbSet<Categoria> PlanoContas { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
